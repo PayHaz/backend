@@ -28,7 +28,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'instrumenti-darom.ru',
-    '46.8.141.115'
+    '46.8.141.115',
+    'www.google.com:443',
+    'www.google.com',
 ]
 
 
