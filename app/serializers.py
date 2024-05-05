@@ -7,7 +7,6 @@ class CategoryHierarchySerializer(serializers.ModelSerializer):
     value = serializers.IntegerField(source='id')
     title = serializers.CharField(source='name')
     children = serializers.SerializerMethodField()
-    image = serializers.SerializerMethodField('get_images')
 
     class Meta:
         model = Category
@@ -15,9 +14,6 @@ class CategoryHierarchySerializer(serializers.ModelSerializer):
 
     def get_children(self, obj):
         return CategoryHierarchySerializer(obj.children, many=True).data
-
-    def get_images(self, obj):
-        return [{'id': image.id, 'img': image.image.url} for image in obj.images.all()]
 
 
 class CategorySerializer(serializers.ModelSerializer):
